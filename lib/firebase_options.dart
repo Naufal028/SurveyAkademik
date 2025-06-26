@@ -41,7 +41,7 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyCZ0w6gsbUS3Uex2UL9aKW7qRmKLDxCtZ0',
+    apiKey: 'apikey',
     appId: '1:22515697054:web:039a0f4a98533ca4eac28f',
     messagingSenderId: '22515697054',
     projectId: 'survey-akademik',
@@ -51,7 +51,7 @@ class DefaultFirebaseOptions {
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyDJiYP_aTWRhE4L8WHr8_K8EUFlHDV2xhA',
+    apiKey: 'apikeyA',
     appId: '1:22515697054:android:d29d2a82a8513c68eac28f',
     messagingSenderId: '22515697054',
     projectId: 'survey-akademik',
@@ -59,7 +59,7 @@ class DefaultFirebaseOptions {
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyA_y3vd1CP_XYEe69QrrKUz6WYegIJNdOA',
+    apiKey: 'apikey',
     appId: '1:22515697054:ios:e0e87b148a473de3eac28f',
     messagingSenderId: '22515697054',
     projectId: 'survey-akademik',
@@ -68,7 +68,7 @@ class DefaultFirebaseOptions {
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyA_y3vd1CP_XYEe69QrrKUz6WYegIJNdOA',
+    apiKey: 'apikey',
     appId: '1:22515697054:ios:e0e87b148a473de3eac28f',
     messagingSenderId: '22515697054',
     projectId: 'survey-akademik',
@@ -77,7 +77,7 @@ class DefaultFirebaseOptions {
   );
 
   static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'AIzaSyCZ0w6gsbUS3Uex2UL9aKW7qRmKLDxCtZ0',
+    apiKey: 'apikey',
     appId: '1:22515697054:web:14fc5931c4d650afeac28f',
     messagingSenderId: '22515697054',
     projectId: 'survey-akademik',
