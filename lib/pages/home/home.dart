@@ -1,15 +1,16 @@
-import 'package:firebase_ui_auth/firebase_ui_auth.dart';
+import 'package:survey_akademik/services/auth_service.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+class Home extends StatelessWidget {
+  const Home({super.key});
 
   @override
   Widget build(BuildContext context) => Scaffold(
       appBar: AppBar(
         title: const Text('Survey Akademik'),
-        backgroundColor: Colors.blueAccent,
-        actions: [
+        backgroundColor: Colors.lightBlueAccent,
+        /*actions: [
           IconButton(
             icon: const Icon(Icons.person),
             onPressed: () {
@@ -21,7 +22,7 @@ class HomeScreen extends StatelessWidget {
               );
             },
           )
-        ],
+        ],*/
       ),
       drawer: const NavigationDrawer(),
       body: Center(
@@ -29,6 +30,8 @@ class HomeScreen extends StatelessWidget {
         ),
       ),
     );
+
+  
 }
 
 class NavigationDrawer extends StatelessWidget {
@@ -36,17 +39,35 @@ class NavigationDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Drawer(
-    child: SingleChildScrollView(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
-          buildHeader(context),
-          buildMenuItems(context),
-          const SignOutButton()
-        ],
-      )
-    ),
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: <Widget>[
+        buildHeader(context),
+        Expanded(child: SingleChildScrollView(
+          child: buildMenuItems(context),
+        ),
+        ),
+        const SizedBox(height: 30,),
+                _logout(context)
+      ],
+    )
   );
+
+  Widget _logout(BuildContext context) {
+    return ListTile(
+      leading: const Icon(Icons.logout, color: Colors.redAccent),
+      title: const Text(
+        "Sign Out",
+        style: TextStyle(
+          color: Colors.redAccent,
+          fontWeight: FontWeight.w500,
+        ),
+      ),
+      onTap: () async {
+        await AuthService().signout(context: context);
+      },
+    );
+  }
 
   Widget buildHeader(BuildContext context) => Container(
     padding: EdgeInsets.only(
@@ -62,7 +83,7 @@ class NavigationDrawer extends StatelessWidget {
         title: const Text("Home"),
         onTap: () =>
           Navigator.of(context).pushReplacement(MaterialPageRoute(
-            builder: (context) => const HomeScreen(),
+            builder: (context) => const Home(),
             )),
       ),
       ListTile(
