@@ -15,6 +15,7 @@ class Signup extends StatefulWidget {
 
 class _SignupState extends State<Signup> {
   final _formKey = GlobalKey<FormState>();
+  final _nameController = TextEditingController();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   bool _obscurePwd = true;
@@ -44,6 +45,7 @@ class _SignupState extends State<Signup> {
     if (!_formKey.currentState!.validate()) return;
     setState(() => _submitting = true);
     await AuthService().signup(
+      name : _nameController.text.trim(),
       email: _emailController.text.trim(),
       password: _passwordController.text.trim(),
       context: context,
@@ -76,6 +78,13 @@ class _SignupState extends State<Signup> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      Text ('Name', style: _labelStyle,),
+                      const SizedBox(height: 10),
+                      TextFormField(
+                        controller: _nameController,
+                        decoration: _fieldDecoration('Enter name'),
+                      ),
+                      const SizedBox(height: 20),
                       Text('Email Address', style: _labelStyle),
                       const SizedBox(height: 10),
                       TextFormField(

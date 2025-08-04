@@ -10,18 +10,19 @@ class AuthService {
   final _auth = FirebaseAuth.instance;
 
   Future<void> signup({
+    required String name,
     required String email,
     required String password,
     required BuildContext context
   }) async {
-    
+      
     try {
 
       await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: email,
         password: password
       );
-
+      
       await Future.delayed(const Duration(seconds: 1));
       Navigator.pushReplacement(
         context,
@@ -125,6 +126,24 @@ class AuthService {
         )
       );
     } catch (e) {
+      print(e.toString());
+    }
+  }
+
+  Future<void> sendPasswordResetLink({
+     required String email,
+     required BuildContext context
+    }) async {
+    try {
+      await _auth.sendPasswordResetEmail(email: email);
+      await Future.delayed(const Duration(seconds: 1));
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (BuildContext context) => const Login()
+        )
+      );
+    } catch (e){
       print(e.toString());
     }
   }

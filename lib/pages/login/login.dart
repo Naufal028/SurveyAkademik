@@ -1,5 +1,6 @@
 import 'package:survey_akademik/pages/signup/signup.dart';
 import 'package:survey_akademik/services/auth_service.dart';
+import 'package:survey_akademik/pages/login/forgotpassword.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -102,8 +103,28 @@ class _LoginState extends State<Login> {
                             onPressed: () => setState(() => _obscurePwd = !_obscurePwd),
                           ),
                         ),
-                        validator: (v) => (v == null || v.length < 6) ? 'Minimum 6 characters' : null,
+                        validator: (v) => (v == null || v.length < 6) ? 'Enter a valid password' : null,
                       ),
+                      Align(
+                        alignment: Alignment.centerRight,
+                        child: TextButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (_) => ForgotPasswordPage()),
+                            );
+                          },
+                          child: Text(
+                            'Forgot Password?',
+                            style: GoogleFonts.inter(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w500,
+                              color: Theme.of(context).colorScheme.primary,
+                            ),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 20),
                       const SizedBox(height: 30),
                       FilledButton(
                         onPressed: _submitting ? null : _handleSignin,
